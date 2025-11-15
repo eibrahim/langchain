@@ -15,6 +15,9 @@ Gemspec/DevelopmentDependencies:
 Metrics/MethodLength:
   Max: 20
 
+Metrics/ParameterLists:
+  Max: 8
+
 Metrics/ClassLength:
   Max: 150
 
@@ -28,3 +31,7 @@ Metrics/BlockLength:
 
 Layout/LineLength:
   Max: 120
+
+Lint/EmptyBlock:
+  Exclude:
+    - 'spec/**/*'

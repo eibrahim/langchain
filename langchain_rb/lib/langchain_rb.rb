@@ -18,6 +18,7 @@ require_relative 'langchain_rb/messages/base'
 require_relative 'langchain_rb/messages/human_message'
 require_relative 'langchain_rb/messages/ai_message'
 require_relative 'langchain_rb/messages/system_message'
+require_relative 'langchain_rb/providers/azure_openai'
 
 module LangchainRb
   class Error < StandardError; end

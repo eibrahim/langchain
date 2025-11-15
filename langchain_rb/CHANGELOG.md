@@ -5,6 +5,17 @@ All notable changes to the LangChain Ruby gem will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+- Azure OpenAI integration with full support for chat and completion models
+- `LangchainRb::Providers::AzureOpenAI::Chat` - Chat completions via Azure OpenAI Service
+- `LangchainRb::Providers::AzureOpenAI::LLM` - Text completions via Azure OpenAI Service
+- Comprehensive test suite for Azure OpenAI provider (16 tests)
+- Example demonstrating Azure OpenAI usage
+- Support for configurable API versions, endpoints, and deployment names
+- Proper error handling for Azure OpenAI API responses
+
 ## [0.1.0] - 2024-11-15
 
 ### Added

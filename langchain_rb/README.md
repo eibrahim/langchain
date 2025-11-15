@@ -143,6 +143,41 @@ LangChain Ruby provides base classes for different types of language models:
 
 To integrate with a specific provider (OpenAI, Anthropic, etc.), create a subclass and implement the required methods.
 
+#### Azure OpenAI Integration
+
+Built-in support for Azure OpenAI Service:
+
+```ruby
+# Chat completions
+chat_model = LangchainRb::Providers::AzureOpenAI::Chat.new(
+  api_key: ENV['AZURE_OPENAI_API_KEY'],
+  endpoint: ENV['AZURE_OPENAI_ENDPOINT'],
+  deployment_name: 'gpt-4',
+  api_version: '2024-02-01',
+  temperature: 0.7,
+  max_tokens: 150
+)
+
+messages = [
+  LangchainRb::Messages::SystemMessage.new(content: 'You are a helpful assistant.'),
+  LangchainRb::Messages::HumanMessage.new(content: 'Hello!')
+]
+
+response = chat_model.call(messages)
+puts response.content
+
+# Text completions (for instruct models)
+llm = LangchainRb::Providers::AzureOpenAI::LLM.new(
+  api_key: ENV['AZURE_OPENAI_API_KEY'],
+  endpoint: ENV['AZURE_OPENAI_ENDPOINT'],
+  deployment_name: 'gpt-35-turbo-instruct',
+  temperature: 0.5
+)
+
+completion = llm.call('Explain what Azure OpenAI is:')
+puts completion
+```
+
 ### Prompts
 
 Prompts help you create and manage templates for LLM inputs:
