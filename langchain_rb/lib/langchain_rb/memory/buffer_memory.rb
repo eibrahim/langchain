@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "base"
+require_relative 'base'
 
 module LangchainRb
   module Memory
@@ -16,6 +16,7 @@ module LangchainRb
       # @param output_key [Symbol] The key for output in the chain
       # @param return_messages [Boolean] Whether to return messages or string
       def initialize(memory_key: :history, input_key: :input, output_key: :text, return_messages: false)
+        super()
         @memory_key = memory_key
         @input_key = input_key
         @output_key = output_key
@@ -34,7 +35,7 @@ module LangchainRb
       #
       # @param inputs [Hash] Current input values (unused)
       # @return [Hash] Hash with memory key and conversation history
-      def load_memory_variables(inputs = {})
+      def load_memory_variables(_inputs = {})
         if return_messages
           { memory_key => @chat_memory.dup }
         else
@@ -49,7 +50,7 @@ module LangchainRb
       def save_context(inputs, outputs)
         input_str = inputs[input_key]
         output_str = outputs[output_key]
-        
+
         @chat_memory << Messages::HumanMessage.new(content: input_str) if input_str
         @chat_memory << Messages::AIMessage.new(content: output_str) if output_str
       end

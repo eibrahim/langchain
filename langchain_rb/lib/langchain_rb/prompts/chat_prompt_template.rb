@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "base"
+require_relative 'base'
 
 module LangchainRb
   module Prompts
@@ -29,7 +29,7 @@ module LangchainRb
           input_variables.concat(vars)
           { role: role, content: content }
         end
-        
+
         new(messages: message_templates, input_variables: input_variables.uniq)
       end
 
@@ -39,13 +39,13 @@ module LangchainRb
       # @return [Array<Message>] Array of formatted message objects
       def format_messages(**kwargs)
         validate_input_variables(kwargs)
-        
+
         messages.map do |msg_template|
           content = msg_template[:content].dup
           kwargs.each do |key, value|
             content.gsub!("{#{key}}", value.to_s)
           end
-          
+
           case msg_template[:role]
           when :system
             Messages::SystemMessage.new(content: content)

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "base"
+require_relative 'base'
 
 module LangchainRb
   module Chains
@@ -54,16 +54,16 @@ module LangchainRb
       # @return [Hash] Output containing the generated text
       def _call(inputs)
         log("Formatting prompt with inputs: #{inputs.inspect}")
-        
+
         # Format the prompt
         formatted_prompt = prompt.format(**inputs)
         log("Formatted prompt: #{formatted_prompt}")
-        
+
         # Call the LLM
-        log("Calling LLM...")
+        log('Calling LLM...')
         response = llm.call(formatted_prompt)
         log("LLM response: #{response}")
-        
+
         { text: response }
       end
     end

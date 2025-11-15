@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "base"
+require_relative 'base'
 
 module LangchainRb
   module LanguageModels
@@ -14,7 +14,7 @@ module LangchainRb
       # @return [Message] The AI's response message
       def call(messages, stop: nil)
         run_before_callbacks(messages)
-        
+
         begin
           response = _generate(messages, stop: stop)
           run_after_callbacks(response)
@@ -42,10 +42,8 @@ module LangchainRb
       # @param messages [Array<Message>] Array of message objects
       # @param stop [Array<String>] Optional stop sequences
       # @yield [Message] Chunks of the response message
-      def stream(messages, stop: nil)
-        _stream(messages, stop: stop) do |chunk|
-          yield chunk
-        end
+      def stream(messages, stop: nil, &block)
+        _stream(messages, stop: stop, &block)
       end
 
       protected

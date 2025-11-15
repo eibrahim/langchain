@@ -17,8 +17,8 @@ module LangchainRb
       # This can be included in the prompt.
       #
       # @return [String] Instructions for the LLM
-      def get_format_instructions
-        ""
+      def format_instructions
+        ''
       end
 
       # Get the type of the output parser.

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "base"
+require_relative 'base'
 
 module LangchainRb
   module LanguageModels
@@ -21,7 +21,7 @@ module LangchainRb
       # @return [String] The completion text
       def call(prompt, stop: nil)
         run_before_callbacks(prompt)
-        
+
         begin
           response = _generate(prompt, stop: stop)
           run_after_callbacks(response)
@@ -38,12 +38,10 @@ module LangchainRb
       # @param prompt [String] The prompt to complete
       # @param stop [Array<String>] Optional stop sequences
       # @yield [String] Chunks of generated text
-      def stream(prompt, stop: nil)
-        raise NotImplementedError, "Streaming not implemented for this model" unless streaming
+      def stream(prompt, stop: nil, &block)
+        raise NotImplementedError, 'Streaming not implemented for this model' unless streaming
 
-        _stream(prompt, stop: stop) do |chunk|
-          yield chunk
-        end
+        _stream(prompt, stop: stop, &block)
       end
 
       protected

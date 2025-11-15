@@ -19,17 +19,17 @@ module LangchainRb
       # @return [Hash] Output values from the chain
       def call(inputs)
         run_before_callbacks(inputs)
-        
+
         begin
           # Load memory context if available
           inputs = load_memory_variables(inputs) if memory
-          
+
           # Execute the chain
           outputs = _call(inputs)
-          
+
           # Save to memory if available
           save_memory(inputs, outputs) if memory
-          
+
           run_after_callbacks(outputs)
           outputs
         rescue StandardError => e
